@@ -11,6 +11,7 @@
 ![Versão NPM](http://img.shields.io/static/v1?label=v10.9.2&message=%20NPM&color=BLUE&style=for-the-badge)
 ![Versão ANGULAR](http://img.shields.io/static/v1?label=v19.2.7&message=%20ANGULAR&color=PINK&style=for-the-badge)
 ![Versão SYMFONY](http://img.shields.io/static/v1?label=v7.2.5&message=%20SYMFONY&color=PINK&style=for-the-badge)
+![Versão PHP](http://img.shields.io/static/v1?label=v8.2.12&message=%20PHP&color=PINK&style=for-the-badge)
 
 ![Symfony](https://img.shields.io/badge/Symfony-black?style=for-the-badge&logo=symfony&logoColor=white)
 ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
@@ -34,17 +35,6 @@ Projeto Full Stack utilizando Symfony (Backend) e Angular (Frontend), com banco 
 ├── backend/     # Projeto Symfony
 └── frontend/    # Projeto Angular
 ```
-
----
-
-## ⚙️ Requisitos
-
-- PHP >= 7.4
-- Composer
-- Node.js e NPM
-- Angular CLI
-- PostgreSQL
-- Symfony CLI
 
 ---
 

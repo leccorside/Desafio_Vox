@@ -119,7 +119,7 @@ O frontend estará disponível em:
 ## 📦 Requisitos
 
 - Git
-- PHP 7.4 ou superior
+- PHP 8.2.12 ou superior
 - Composer
 - PostgreSQL
 - Node.js 20+ e npm

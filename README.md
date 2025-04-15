@@ -1,5 +1,29 @@
 
-# Sistema de Gerenciamento de Usuários, Empresas e Sócios
+<div align="center">
+  <h1 align="center">
+    Desafio Vox
+  </h1>
+</div>
+
+<div align="center">
+
+![Versão NODE](http://img.shields.io/static/v1?label=v22.14.0&message=%20NODE&color=GREEN&style=for-the-badge)
+![Versão NPM](http://img.shields.io/static/v1?label=v10.9.2&message=%20NPM&color=BLUE&style=for-the-badge)
+![Versão ANGULAR](http://img.shields.io/static/v1?label=v19.2.7&message=%20ANGULAR&color=PINK&style=for-the-badge)
+![Versão SYMFONY](http://img.shields.io/static/v1?label=v7.2.5&message=%20SYMFONY&color=PINK&style=for-the-badge)
+
+![Symfony](https://img.shields.io/badge/Symfony-black?style=for-the-badge&logo=symfony&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgresql-4169e1?style=for-the-badge&logo=postgresql&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+
+</div>
+
+
+# 📜 Sistema de Gerenciamento de Usuários, Empresas e Sócios
 
 Projeto Full Stack utilizando Symfony (Backend) e Angular (Frontend), com banco de dados PostgreSQL, autenticação, permissionamento e API REST. O projeto realiza operações de CRUD para Usuários, Empresas e Sócios (vinculados às Empresas).
 

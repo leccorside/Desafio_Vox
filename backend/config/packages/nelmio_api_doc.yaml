@@ -1,0 +1,282 @@
+nelmio_api_doc:
+  areas:
+    default:
+      path_patterns:
+        - ^/api # Inclui apenas rotas que começam com /api
+  documentation:
+    openapi: 3.0.0
+    info:
+      title: "API de Gerenciamento"
+      description: "Documentação da API para gerenciar usuários, empresas e sócios."
+      version: "1.0.0"
+    servers:
+      - url: "http://127.0.0.1:8000/api"
+    paths:
+      # LOGIN
+      /login:
+        post:
+          summary: "Realizar login"
+          description: "Retorna um token de autenticação e os dados do usuário autenticado."
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      description: "E-mail do usuário"
+                    senha:
+                      type: string
+                      description: "Senha do usuário"
+          responses:
+            '200':
+              description: "Login realizado com sucesso."
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                      usuario:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          nome:
+                            type: string
+                          email:
+                            type: string
+                          roles:
+                            type: array
+                            items:
+                              type: string
+            '401':
+              description: "Credenciais inválidas."
+      # USUÁRIOS
+      /usuarios:
+        get:
+          summary: "Listar todos os usuários"
+          description: "Retorna uma lista de todos os usuários cadastrados."
+          responses:
+            '200':
+              description: "Lista de usuários cadastrados."
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        nome:
+                          type: string
+                        email:
+                          type: string
+                        roles:
+                          type: array
+                          items:
+                            type: string
+        post:
+          summary: "Criar um novo usuário"
+          description: "Adiciona um novo usuário ao sistema."
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    nome:
+                      type: string
+                      description: "Nome do usuário"
+                    email:
+                      type: string
+                      description: "E-mail do usuário"
+                    senha:
+                      type: string
+                      description: "Senha do usuário"
+                    roles:
+                      type: array
+                      description: "Papéis atribuídos ao usuário"
+                      items:
+                        type: string
+          responses:
+            '201':
+              description: "Usuário criado com sucesso."
+      /usuarios/{id}:
+        put:
+          summary: "Atualizar um usuário existente"
+          description: "Atualiza os dados de um usuário com base no ID."
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    nome:
+                      type: string
+                    email:
+                      type: string
+                    senha:
+                      type: string
+                    roles:
+                      type: array
+                      items:
+                        type: string
+          responses:
+            '200':
+              description: "Usuário atualizado com sucesso."
+        delete:
+          summary: "Excluir um usuário pelo ID"
+          description: "Remove um usuário específico com base no ID."
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            '200':
+              description: "Usuário excluído com sucesso."
+      # EMPRESAS
+      /empresas:
+        get:
+          summary: "Listar todas as empresas"
+          description: "Retorna uma lista de empresas cadastradas."
+          responses:
+            '200':
+              description: "Lista de empresas cadastradas."
+        post:
+          summary: "Criar uma nova empresa"
+          description: "Adiciona uma nova empresa ao sistema."
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    nome:
+                      type: string
+                      description: "Nome da empresa"
+                    cnpj:
+                      type: string
+                      description: "CNPJ da empresa"
+          responses:
+            '201':
+              description: "Empresa criada com sucesso."
+      /empresas/{id}:
+        put:
+          summary: "Atualizar uma empresa existente"
+          description: "Atualiza os dados de uma empresa com base no ID."
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    nome:
+                      type: string
+                    cnpj:
+                      type: string
+          responses:
+            '200':
+              description: "Empresa atualizada com sucesso."
+        delete:
+          summary: "Excluir uma empresa pelo ID"
+          description: "Remove uma empresa específica com base no ID."
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            '200':
+              description: "Empresa excluída com sucesso."
+      # SÓCIOS
+      /socios:
+        get:
+          summary: "Listar todos os sócios"
+          description: "Retorna uma lista de todos os sócios cadastrados."
+          responses:
+            '200':
+              description: "Lista de sócios cadastrados."
+        post:
+          summary: "Criar um novo sócio"
+          description: "Adiciona um novo sócio ao sistema."
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    nome:
+                      type: string
+                      description: "Nome do sócio"
+                    cpf:
+                      type: string
+                      description: "CPF do sócio"
+                    empresa_id:
+                      type: integer
+                      description: "ID da empresa associada ao sócio"
+          responses:
+            '201':
+              description: "Sócio criado com sucesso."
+      /socios/{id}:
+        put:
+          summary: "Atualizar um sócio existente"
+          description: "Atualiza os dados de um sócio com base no ID."
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    nome:
+                      type: string
+                    cpf:
+                      type: string
+                    empresa_id:
+                      type: integer
+          responses:
+            '200':
+              description: "Sócio atualizado com sucesso."
+        delete:
+          summary: "Excluir um sócio pelo ID"
+          description: "Remove um sócio específico com base no ID."
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: integer
+          responses:
+            '200':
+              description: "Sócio excluído com sucesso."

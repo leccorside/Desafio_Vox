@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalhes do Usuário{% endblock %}
+
+{% block body %}
+    <h1>Detalhes do Usuário</h1>
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{ usuario.id }}</td>
+        </tr>
+        <tr>
+            <th>Nome</th>
+            <td>{{ usuario.nome }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ usuario.email }}</td>
+        </tr>
+        <tr>
+            <th>Funções</th>
+            <td>{{ usuario.roles|join(', ') }}</td>
+        </tr>
+    </table>
+
+    <a href="{{ path('app_usuario_index') }}" class="btn btn-secondary">Voltar para a Lista</a>
+{% endblock %}

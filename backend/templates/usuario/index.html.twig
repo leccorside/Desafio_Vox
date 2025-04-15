@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Usuários{% endblock %}
+
+{% block body %}
+    <h1>Lista de Usuários</h1>
+
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Função</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.roles|join(', ') }}</td>
+                    <td>
+                        <a href="{{ path('app_usuario_show', {'id': usuario.id}) }}" class="btn btn-info btn-sm">Visualizar</a>
+                        <a href="{{ path('app_usuario_edit', {'id': usuario.id}) }}" class="btn btn-primary btn-sm">Editar</a>
+                        <form method="post" action="{{ path('app_usuario_delete', {'id': usuario.id}) }}" onsubmit="return confirm('Deseja excluir este usuário?');" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ usuario.id) }}">
+                            <button class="btn btn-danger btn-sm">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhum registro encontrado</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_usuario_new') }}" class="btn btn-success mt-3">Adicionar Novo Usuário</a>
+{% endblock %}

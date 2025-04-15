@@ -1,0 +1,67 @@
+
+
+.visualizar{
+  color: #0991E5;
+  cursor: pointer;
+}
+
+.editar{
+  color: #10C4A0;
+  cursor: pointer;
+}
+
+.deletar{
+  color: #FF0000;
+  cursor: pointer;
+}
+
+.tabela-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  min-width: 100%;
+}
+
+mat-card.mat-mdc-card.mdc-card {
+  padding: 10px;
+}
+
+mat-grid-list.mat-grid-list {
+  margin-bottom: 15px;
+}
+
+.tile-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding-left: 8px;
+}
+
+.tile-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding-right: 8px;
+}
+
+
+.mat-mdc-mini-fab {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.material-icons {
+  font-size: 18px;
+}
+
+.mat-icon {
+  height: 17px;
+  width: 17px;
+}

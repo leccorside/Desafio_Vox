@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Editar Usuário</h2>
+<mat-dialog-content>
+  <form #editForm="ngForm">
+    <!-- Campo Nome -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Digite o nome" [(ngModel)]="data.nome" name="nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CNPJ</mat-label>
+      <input matInput
+             placeholder="Digite o CNPJ"
+             [(ngModel)]="data.cnpj"
+             name="cnpj"
+             required
+             inputmode="numeric"
+             pattern="[0-9]*"
+             maxlength="14"
+             (keypress)="apenasNumeros($event)">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input matInput placeholder="Digite o Telefone" [(ngModel)]="data.telefone" name="telefone">
+    </mat-form-field>
+
+    <!-- Campo Email -->
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Digite o email" [(ngModel)]="data.email" name="email">
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="fechar()">Cancelar</button>
+  <button mat-button color="primary" (click)="salvar()">Salvar</button>
+</mat-dialog-actions>

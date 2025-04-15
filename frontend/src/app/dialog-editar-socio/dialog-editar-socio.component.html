@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Editar Sócio</h2>
+<mat-dialog-content>
+  <form #editForm="ngForm">
+    <!-- Campo Nome -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Digite o nome" [(ngModel)]="data.nome" name="nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CPF</mat-label>
+      <input matInput
+             placeholder="Digite o CPF"
+             [(ngModel)]="data.cpf"
+             name="cpf"
+             required
+             inputmode="numeric"
+             pattern="[0-9]*"
+             maxlength="11"
+             (keypress)="apenasNumeros($event)">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Empresa</mat-label>
+      <mat-select [(ngModel)]="data.empresa" name="empresa" [compareWith]="compararEmpresas">
+        <mat-option *ngFor="let empresa of empresas" [value]="empresa">
+          {{ empresa.nome }} <!-- Exibe o nome da empresa -->
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="fechar()">Cancelar</button>
+  <button mat-button color="primary" (click)="salvar()">Salvar</button>
+</mat-dialog-actions>

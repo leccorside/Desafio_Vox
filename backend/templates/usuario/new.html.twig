@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Criar Novo Usuário{% endblock %}
+
+{% block body %}
+    <h1>Criar Novo Usuário</h1>
+
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_widget(form) }}
+        </div>
+        <button class="btn btn-primary">Salvar</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_usuario_index') }}" class="btn btn-secondary mt-3">Voltar para a Lista</a>
+{% endblock %}

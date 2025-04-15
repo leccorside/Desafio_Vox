@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Sócios{% endblock %}
+
+{% block body %}
+    <h1>Lista de Sócios</h1>
+
+    <!-- Exibe mensagens de alerta -->
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Empresa</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for socio in socios %}
+                <tr>
+                    <td>{{ socio.id }}</td>
+                    <td>{{ socio.nome }}</td>
+                    <td>{{ socio.cpf }}</td>
+                    <td>{{ socio.empresa.nome }}</td>
+                    <td>
+                        <a href="{{ path('app_socio_show', {'id': socio.id}) }}" class="btn btn-info btn-sm">Visualizar</a>
+                        <a href="{{ path('app_socio_edit', {'id': socio.id}) }}" class="btn btn-primary btn-sm">Editar</a>
+                        <form method="post" action="{{ path('app_socio_delete', {'id': socio.id}) }}" onsubmit="return confirm('Deseja realmente excluir este sócio?');" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socio.id) }}">
+                            <button class="btn btn-danger btn-sm">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhum registro encontrado</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_socio_new') }}" class="btn btn-success mt-3">Adicionar Novo Sócio</a>
+{% endblock %}

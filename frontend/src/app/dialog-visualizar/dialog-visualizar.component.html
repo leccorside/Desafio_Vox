@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Detalhes do Usuário</h2>
+<mat-dialog-content>
+  <p><strong>ID:</strong> {{ data.id }}</p>
+  <p><strong>Nome:</strong> {{ data.nome }}</p>
+  <p><strong>E-mail:</strong> {{ data.email }}</p>
+  <p><strong>Função:</strong>
+    {{
+      data.roles[0] === 'ROLE_ADMIN' ? 'Administrador' :
+      data.roles[0] === 'ROLE_USER' ? 'Usuário' :
+      data.roles[0]
+    }}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

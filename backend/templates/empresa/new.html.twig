@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Criar Nova Empresa{% endblock %}
+
+{% block body %}
+    <h1>Criar Nova Empresa</h1>
+
+    <!-- Exibe mensagens de erro ou sucesso -->
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <!-- Inclui o formulário -->
+    {{ include('empresa/_form.html.twig', {'button_label': 'Salvar'}) }}
+
+    <!-- Link estilizado para voltar à lista -->
+    <a href="{{ path('app_empresa_index') }}" class="btn btn-secondary mt-3">Voltar para a Lista</a>
+{% endblock %}
